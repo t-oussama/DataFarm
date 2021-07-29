@@ -1,0 +1,940 @@
+/* Variables pour définir les couleurs du style */
+:root {
+  /* Textes colorés */
+  --color_text:#115cb8;
+  /* Couleur de selection des icones */
+  --color-selected: #168ecf;
+  /* Couleur pour le survol */
+  --color-hover: #e8e9eb;
+  /* Fond transparent */
+  --transparent-backgound: rgba(255,255,255,0.86);
+  /* Couleur des textes moins soutenue */
+  --light-text-color: #888;
+  /* Temps de disparition des boites et fenetres */
+  --opacity-time-change: 2s;
+  /* Temps d'apparition des menus */
+  --menu-time-change: 1s;
+  /* Position verticale du menu thématique */
+  --z-index-menu-thematique: 1;
+  /* Position verticale du menu des icones */
+  --z-index-menu: 2;
+  /* Ombre globale */
+  --box-shadow: 0px 0px 10px 0px #888;
+  /* Coins arrondits */
+  --border-radius: 10px;
+}
+
+
+/* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+#map {
+  height: 100%;
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Simplifie la définition de la taille des boites */
+* {
+  box-sizing: border-box;
+}
+
+/* Les fonts pour tous les textes */
+/* IMPORTANT: exprimer des fonts en em pour que ce soit relatif à la font globale */
+/* En effet px est statique alors que em est par rapport au parent */
+body {
+  /* font-family: Verdana, Geneva, sans-serif; */
+  font-family: Calibri, Candara, Segoe, Segoe UI, Optima, Arial, sans-serif;
+  /* Force une taille fixe 11px pour toutes les fonts (très contraint) */
+  /* Les autres fonts doivent utiliser la notation relative em ou rem */
+  /* On suppose que la taille standard est 16px, on veut un peut plus petit 11px */
+  /* Donc on place 11/16 = 0.7em */
+  font-size: 0.8em;
+}
+
+
+#accueil {
+  position: absolute;
+  left: 35%;
+  top : 0px;
+  background-color: rgba(255,255,255,1);
+  width: 360px;
+  padding-top: 30px;
+  padding-right: 30px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  /* Ombrage à gauche et à droite */
+  box-shadow: 0px 0px 20px 0px #444;
+}
+
+/* Ce qui se trouve dans la boite laisse une marge vide à gauche pour l'icone */
+#accueil .content {
+  padding-left: 100px;
+  margin-top: 0px;
+}
+
+#accueil p, .help p {
+  color: var(--light-text-color);
+}
+
+#accueil h1 {
+  text-transform: uppercase;
+  font-weight: normal;
+  margin-top: 0px;
+  margin-bottom: 1px;
+  font-size: 150%;
+  vertical-align: text-top;
+}
+
+#accueil img {
+  padding-left: 10px;
+  height: 60px;
+  position: absolute;
+  top : 30px;
+  left : 10px;
+}
+
+
+/*******************************************************************/
+/* Boite centrée de la langing page                                */
+/*******************************************************************/
+
+div.landingPage {
+  font-family: 'Raleway';
+  /* Pour placer la div au centre de la fenetre */
+  position: absolute;
+  /* Déplace le coin haut gauche au centre de la fenetre */
+  top: 50%; left: 50%;
+  /* deplace le contenu de 50% de sa propre taille */
+  transform: translate(-50%, -50%);
+  /* Largeur fixe */
+  width: 950px;
+  /* Fond blanc */
+  background-color: white;
+  /* Coins arrondits */
+  border-radius: 10px;
+  /* Ombre */
+  box-shadow: var(--box-shadow);
+  /* Marge du contenu */
+  padding: 0px;
+}
+
+
+
+/* le header est en bleu */
+div.landingPage>header {
+  font-family: 'Calibri';
+  /* Coins arrondits */
+  border-top-left-radius: 10px;
+  border-top-right-radius:10px;
+  /* Pour placer l'image */
+  background-color: #006ac7;
+  /* Font blanche */
+  color: white;
+  /* Marge du contenu */
+  padding-left:70px;
+  padding-top: 40px;
+  padding-bottom: 50px;
+}
+
+/* Icone à droite, 35% de la place */
+div.landingPage>header>img {
+  width: 35%;
+  /* Position en haut à droite */
+  position: absolute;
+  /* Déborde au dessus */
+  top: 63px;
+  right: 60px;
+}
+
+
+/* Les paragraphe et boutons ont une fonte plus legère */
+div.landingPage p, div.landingPage button {
+  /* Fonte plus legère */
+  font-weight: lighter;
+}
+
+div.landingPage button {
+  font-size: 13px;
+  position: relative;
+  left: 20px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-top: 30px;
+}
+
+/* Premier paragraphe avec l'icone sur le coté : tous les p de premier niveau */
+div.landingPage header p {
+  width: 51%;
+  font-size: 34px;
+  text-transform: uppercase;
+  line-height: 1.4;
+  /* Marges : géré par le titre */
+  margin-top: 70px;
+}
+div.landingPage header>div>img {
+  width:20%;
+}
+
+/* Titre */
+div.landingPage  h1 span {
+  font-size: 0.5em;
+  /* N'est pas en gras */
+  font-weight: normal;
+  /* Pas de marge en haut de la boite */
+  margin-top: 0px;
+  /* Marge pour séparer du text*/
+  margin-bottom: 10px;
+}
+
+div.landingPage h1 {
+  vertical-align:text-bottom;
+  margin-top: 0px;
+  font-weight: normal;
+}
+
+/* La section a des articles en colonnes */
+div.landingPage>section {
+  padding: 40px;
+  padding-left:70px;
+  padding-right:70px;
+
+  display: flex;
+  flex-direction: horizontal;
+  justify-content: space-between;
+  /* Marge importante avec le dessus */
+  margin-top: 0px;
+}
+
+div.landingPage article {
+  width: 270px;
+}
+
+#art1  {
+  padding-right: 30px
+}
+
+#art2  {
+  padding-right: 30px
+}
+
+/* Les niveaux 2 sont petit et bleu */
+div.landingPage h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0983DC;
+  /* Pas de marge dessous */
+  margin-bottom: 0px;
+}
+
+/* Le niveaux h3 de sous titre */
+div.landingPage h3 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  line-height: 1.4;
+  font-size: 17px;
+  color: #333333;
+  font-weight: 700;
+}
+
+/* Le paragraphe qui suit le h3 */
+div.landingPage h3 + p {
+  margin-top: 5px;
+  font-size: 1.1em;
+  line-height: 1.4em;
+  color: #333333;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+
+/*******************************************************************/
+/* Boite centrée */
+/*******************************************************************/
+
+div.center {
+  font-family: 'Raleway';
+  /* Pour placer la div au centre de la fenetre */
+  position: absolute;
+  /* Déplace le coin haut gauche au centre de la fenetre */
+  top: 50%; left: 50%;
+  /* deplace le contenu de 50% de sa propre taille */
+  transform: translate(-50%, -50%);
+  /* Largeur fixe */
+  width: 950px;
+  /* Fond blanc */
+  background-color: white;
+  /* Coins arrondits */
+  border-radius: var(--border-radius);
+  /* Ombre */
+  box-shadow: var(--box-shadow);
+  /* Marge du contenu */
+  padding: 40px;
+}
+
+/* Les paragraphe et boutons ont une fonte plus legère */
+div.center p, div.center button {
+  /* Fonte plus legère */
+  font-weight: lighter;
+}
+
+/* Premier paragraphe avec l'icone sur le coté : tous les p de premier niveau */
+div.center>p {
+  width: 55%;
+  font-size: 1.7em;
+  line-height: 1.4;
+  /* Marges : géré par le titre */
+  margin-top: 0px;
+
+}
+
+/* Icone à droite, 35% de la place */
+div.center>img {
+  width: 38%;
+  /* Position en haut à droite */
+  position: absolute;
+  /* Déborde au dessus */
+  top: -100px;
+  right: 60px;
+}
+
+/* Titre */
+div.center>h1 {
+  font-size: 3.8em;
+  /* N'est pas en gras */
+  font-weight: normal;
+  /* Pas de marge en haut de la boite */
+  margin-top: 0px;
+  /* Marge pour séparer du text*/
+  margin-bottom: 10px;
+}
+
+/* La section a des articles en colonnes */
+div.center>section {
+  display: flex;
+  flex-direction: horizontal;
+  justify-content: space-between;
+  /* Marge importante avec le dessus */
+  margin-top: 70px;
+}
+
+div.center article {
+  width: 280px;
+}
+
+
+/* Les niveaux 2 sont petit et bleu */
+div.center h2 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0983DC;
+  /* Pas de marge dessous */
+  margin-bottom: 0px;
+}
+
+/* Le niveaux h3 de sous titre */
+div.center h3 {
+  margin-top: 5px;
+  margin-bottom: 0px;
+  line-height: 1.4;
+  font-size: 17px;
+  color: #333333;
+  font-weight: 700;
+}
+
+/* Le paragraphe qui suit le h3 */
+div.center h3 + p {
+  margin-top: 5px;
+  font-size: 1.1em;
+  line-height: 1.4em;
+  color: #333333;
+  font-weight: 500;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+/*div.center p {
+  color: #475262;
+  line-height: 1.4;
+  font-size: 15px;
+}*/
+
+/* Style des boutons */
+div.center button {
+  cursor: pointer;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 20px 10px 20px;
+  font-size: 10px;
+  line-height: 17px;
+  /* Fond blanc unis */
+  background-color: #FFF;
+  /* Bords arondits */
+  border-radius: 25px;
+  border: 1px solid #333333;
+  color: #003861;
+  font-weight: 600;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+}
+
+div.center button:hover {
+  background: #0983DC;
+  border-width: 1px;
+  border-color: #ffffff;
+  color: white;
+  transition: all .3s;
+}
+
+/* Le logo en bas à droite */
+div.logo {
+  position: absolute;
+  bottom: 15px;
+  right: 10px;
+}
+
+div.logo img {
+  width: 40px;
+}
+
+/*******************************************************************/
+/* Barre de navigation à gauche */
+/*******************************************************************/
+
+/* La boite de navigation */
+nav {
+  /* Positionnment fixe sur la page, en haut à gauche */
+  position: absolute;
+  top: 0px;
+  left:0px;
+  /* Largeur de la barre, identique aux icones */
+  width: 38px;
+  /* Fond blanc. L'impression vluéte vient de la transparence du fond */
+  background-color: white;
+  /* Sur toute la hauteur */
+  height: 100%;
+  /* Ombrage à droite */
+  box-shadow: 0px 0px 5px 0px #444;
+  /* Espace en haut */
+  padding-top: 10px;
+  padding-left: 0px;
+  padding-right:0px;
+  /* Fond légèrement transparent */
+  background-color: var(--transparent-backgound);
+  /* Placement dans l'axe vertical */
+  z-index: var(--z-index-menu);
+}
+
+/* Les elements du menu nav */
+nav>ul {
+  /* Centrage des icones */
+  text-align: center;
+  /* Supprime les bullet des li */
+  list-style-type: none;
+  /* Supprime le padding pour que les icones entrent dans la barre */
+  padding: 0px 0px 0px 0px;
+}
+
+/* La fonction survol des icones de la barre de navigation gauche */
+nav>ul label:hover {
+  background-color: var(--color-hover);
+}
+
+/* Affiche des icones de la barre */
+nav img {
+  /* taille des icones : la même largeur que la barre */
+  width: 38px;
+  /* Espacement icone et bords de la boite */
+  padding-top: 9px;
+  padding-bottom: 9px;
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+/* Place le li en relative poit pouvoir placer la bulle d'aide */
+nav>ul>li {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  /* Place l'image au centre */
+  padding: 0px;
+}
+
+/* C'est le label qui affiche l'image de l'icone du menu en fond */
+nav>ul>li label {
+  display: block;
+  width: 38px;
+  height: 38px;
+  /* Place l'image au centre */
+  padding: 9px;
+}
+
+/* Definit une zone after pour placer l'icone dans le background */
+label::after {
+  /* Pour pouvoir définir des tailles */
+  display: block;
+  /* Blite vide : c'est le fond qui change */
+  content: "";
+  /* Correspond à la taille de l'image qu'on va afficher */
+  width: 20px;
+  height: 20px;
+  /* On n'affiche l'image qu'une fois */
+  background-repeat: no-repeat;
+  /* Affiche la première image si pas sélectionné */
+  background-position: 0px 0px;
+  /* Comme il y a 2 images de la taille du label */
+  /* La taille est le double de l'affichage */
+  background-size: 40px;
+}
+
+/* Choisi l'image de fond en fonction de l'icone */
+label[for=home]::after {
+  background-image: url('img/home.icn.png');
+}
+
+label[for=searchEngine]::after {
+  background-image: url('img/searchEngine.icn.png');
+}
+
+label[for=userPref]::after {
+  background-image: url('img/userPref.icn.png');
+}
+
+label[for=addEngine]::after {
+  background-image: url('img/addEngine.icn.png');
+}
+
+label[for=informations]::after {
+  background-image: url('img/info.icn.png');
+}
+
+label[for=zoomIn]::after {
+  background-image: url('img/zoomIn.icn.png');
+}
+
+label[for=zoomOut]::after {
+  background-image: url('img/zoomOut.icn.png');
+}
+
+nav>ul input {
+  display: none;
+}
+
+/* Gestion du changement de couleur du label plus grand que le after*/
+nav>ul input:checked ~ label {
+  background-color: var(--color-selected);
+}
+
+/* Deplace l'image du after pour faire apparaitre la version blanche de l'icone */
+nav>ul input:checked ~ label::after {
+  background-position: -20px 0px;
+}
+
+
+/* Change la forme du curseur en fonction du nom de l'icone */
+nav label[for*="zoomIn"] {
+  cursor: zoom-in;
+}
+
+/* Change la forme du curseur en fonction du nom de l'icone */
+nav label[for*="zoomOut"] {
+  cursor: zoom-out;
+}
+
+/* Curseur par défaut */
+nav img {
+  cursor: no-drop;
+}
+
+/* Les bulles d'aide */
+div.help {
+  position: absolute;
+  display: block;
+  /* décalage par rapport à li, pour tenir compte de la fleche */
+  left:60px;
+  /* Remonte un peut pour centrer la fleche sur l'icone */
+  top: -6px;
+  width: 260px;
+  text-align: left;
+  padding: 30px;
+  /* Ombrage à gauche et à droite */
+  box-shadow: 0px 0px 20px 0px #444;
+  /* bords arondits */
+  border-radius: 10px;
+  /* Fond blanc */
+  background-color: white;
+  /* Par défaut la bulle d'aide est cachée */
+  display: none;
+  /* Il faut qu'elle s'affiche au dessus des autres */
+  /* Cette valeur n'a de sens que dans le contexte de la balise nav qui l'encadre */
+  z-index: 1;
+}
+
+div.help h2 {
+  font-size: 11px;
+  margin: 0px;
+}
+div.help p {
+  margin: 0px;
+}
+
+/* Un fleche associé à une boite */
+.arrow-left {
+  width: 0;
+  height: 0;
+  /* Les deux cotés du triangle */
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  /* La largeur */
+  border-right:20px solid white;
+  /* Positionnement à coté de la boite */
+  position: absolute;
+  /* Plutot en haut */
+  top: 15px;
+  left:-20px;
+}
+
+
+/*******************************************************************/
+/* Menu thématique */
+/*******************************************************************/
+
+#menu-thematique {
+
+  /* Positionnement fixe sur la page, en haut à gauche */
+  position: absolute;
+  top: 0px;
+  /*left: 38px; taille du menu à gauche */
+  /* Par défaut, ce menu est caché */
+  left: -21em;
+  width: 21em;
+  /* Marge pour tout aligner à gauche */
+  padding-left: 3em;
+  /* Marge pour tout aligner à droite */
+  padding-right: 1em;
+  /* Fond légèrement transparent */
+  background-color: var(--transparent-backgound);
+  /* Sur toute la hauteur */
+  height: 100%;
+  /* Ombrage à droite */
+  box-shadow: 8px 0px 6px -6px #888;
+  /* Pour séparer avec la barre de navigation gauche */
+  border-left: 1px solid lightgrey;
+  /* Placement dans l'axe vertical */
+  z-index: var(--z-index-menu-thematique);
+}
+
+/* Les titre du menu thématique */
+#menu-thematique h2 {
+  font-size: 1.1em;
+  /* Met tout en majuscules */
+  text-transform: uppercase;
+  /* Pour coller le sous titre */
+  margin-bottom: 0px;
+}
+
+/* Sous titre du menu thématique */
+#menu-thematique h3 {
+  /* Un peu plus petit */
+  font-size: 0.9em;
+  /* Fonte moins lourde */
+  font-weight: lighter;
+  /* Pour coller au titre */
+  margin-top: 0px;
+}
+
+
+/* Icone hors du flux à gauche, l'image en dessous du menu */
+#menu-thematique>img {
+  /* sort l'image du flux */
+  position: absolute;
+  /* Taille double des caractères */
+  width: 2em;
+  /* Décale à gauche et en bas de quelques caractères */
+  transform: translate(-2.5em, 0.9em);
+}
+
+/* Structure hierarchique */
+
+#menu-thematique ul {
+  padding-top: 0em;
+  /* Léger décalage par rapport au bort de l'input */
+  padding-left: 4px;
+  padding-bottom: 10px;
+  /* Supprime le bullet */
+  list-style: none;
+}
+
+/* Partout le texte est normal */
+#menu-thematique li {
+  font-weight: normal;
+  text-transform: none;
+}
+
+/* Seul sur le premier niveau il est bold */
+#menu-thematique>ul>li {
+  font-weight: bold;
+  text-transform: uppercase;
+  /* Pour espacer au cas ou les li sont cote à cote */
+  margin-bottom: 10px;
+}
+
+/* Taille des sous menus */
+#menu-thematique ul ul {
+  /* Espace sous le titre */
+  padding-top: 3px;
+  padding-bottom: 0px;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+#menu-thematique ul ul li {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  /* Espace à gauche */
+  padding-left: 1em;
+  /* Alignement avec le li du dessus : valeur du padding gauche */
+  transform: translate(-1em,0em);
+  /* Coins très légèrement arondits */
+  border-radius: 0.2em;
+}
+
+/* Regle suplémentaire pour gérer le temps de retour au fond vide */
+#menu-thematique ul ul li {
+background-color: none;
+transition: all .5s;
+}
+
+/* Taille de l'icone avant le texte */
+#menu-thematique ul ul li svg {
+  width: 2em;
+  height: 2em;
+  padding: 0.3em;
+  vertical-align: middle;
+  margin-right: 1em;
+  background-color: var(--color-selected);
+}
+
+/* Change la couleur des elements SVG de l'icone */
+#menu-thematique ul ul li svg .icon {
+  fill: white;
+}
+
+
+
+/* Le hover ne change que le fond pas les caractères */
+#menu-thematique ul ul li:hover {
+  background-color: var(--color-hover);
+  transition: all .3s;
+}
+
+/* Change de couleur si active */
+#menu-thematique ul ul li.selected {
+  background-color: var(--color-selected);
+  color: white;
+  transition: all .3s;
+}
+
+/*******************************************************************/
+/* La checkbox dans les bulles et pop-up */
+/*******************************************************************/
+
+/* Voir l'usage de la refinition d'une check box dans :
+https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+*/
+
+div.checkbox {
+  /* La place du bas */
+  margin-bottom: 12px;
+}
+
+div.checkbox label {
+  cursor: pointer;
+  /* Pour pouvoir placer des marges */
+  display: block;
+  /* Pour pouvoir placer la nouvelle checkbox en absolute */
+  position: relative;
+  /* Laisse un peu de place à gauche pour placer la nouvelle checkbox */
+  padding-left: 20px ;
+  /* Couleur moins soutenue */
+  color: var(--light-text-color);
+  /* Empeche le selectionner par erreur le texte */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+
+/* Cache la boite par défaut et la place à droite */
+div.checkbox input {
+  position: absolute;
+  /* Devient invisible */
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Creation de la nouvelle boite checkmark */
+div.checkbox .checkmark {
+  /* Positionnement par rapport au label */
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  /* Couleur dégradée vers la droite, gris vers blanc */
+  background: linear-gradient(to right, #DDD , white);
+  /* border gris clair*/
+  border: 1px solid #AAA;
+}
+
+/* Definition du checkmark */
+div.checkbox .checkmark:after {
+  /* Cree un contenu vide */
+  content: "";
+  /* Positionne par rapport au label */
+  position: absolute;
+  display: none;
+  /* Position de la checkmark */
+  left: 3px;
+  top: 0px;
+  /* Petit coté */
+  width: 4px;
+  /* Grand coté */
+  height: 8px;
+  /* La couleur */
+  border: solid #555;
+  /* Il s'agit simplement d'une boite avec 2 bordures */
+  border-width: 0 3px 3px 0;
+  /* Qui est ensuite tournée */
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* Affiche le checkmark uniquement quand l'input est checked */
+/* Il faut tester l'input qui est juste avant, le frére précédent */
+div.checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/*******************************************************************/
+/* les transitions et annimation */
+/*******************************************************************/
+
+#accueil {
+  transition: opacity var(--opacity-time-change);
+}
+
+/* la transition porte sur le déplacement horizontal */
+#menu-thematique {
+  transition: left var(--menu-time-change);
+}
+
+/* Fait disparaitre l'ombre du menu principal */
+body>nav {
+  transition: box-shadow var(--menu-time-change);
+}
+
+
+/*******************************************************************/
+/* Acceuil serveur */
+/*******************************************************************/
+
+
+#accueil-serveur {
+  /* Positionnment fixe sur la page */
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  bottom: 10px;
+  width: 325px;
+  /*couleur de fond */
+  background-color: white;
+  /* Coins ronds */
+  border-radius:8px;
+  /* Ombrage tout autour */
+  box-shadow: 0px 0px 9px -2px #888;
+}
+
+#accueil-serveur > img{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 25px;
+}
+
+#accueil-serveur .widget{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+#accueil-serveur .widget img{
+  width: 15px;
+}
+
+#accueil-serveur div:not(.widget) {
+  padding-left: 50px;
+}
+
+#accueil-serveur h2 {
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+
+#accueil-serveur p {
+  font-size: 8px;
+  margin-top: 0px;
+}
+
+/* La zone de la requête */
+
+#accueil-serveur form {
+  /* Couleur gise autour */
+  border: 1px solid lightgrey;
+  /* Coins ronds subtile */
+  border-radius:2px;
+  /* Rendre globalement le fond opaque */
+  background-color: white;
+  /* Flex pour mieux aligner l'input et l'image */
+  display: flex;
+  justify-content: space-between;
+  /* Espace sur les cotés */
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+#accueil-serveur form input[type=text] {
+  font-size: 11px;
+  font-style: italic;
+  /* Padding global */
+  padding: 9px;
+  /* La marge à gauche */
+  padding-left: 15px;
+  width: 80%;
+  border: 0px;
+}
+
+/* La loupe à droite dans la boite de recherche */
+#accueil-serveur form button {
+  background-color: white;
+  border: 0px;
+  cursor: pointer;
+}
+
+/* Taille de l'image dans le bouton */
+#accueil-serveur form button img {
+  width: 12px;
+  padding: 0 2px 2px 0;
+}
+
+#accueil-serveur form button:hover {
+  background-color: var(--color-hover);
+}
